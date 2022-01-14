@@ -1,7 +1,10 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const catController =  require('./controllers/catController.js');
+const handlebars = require('express-handlebars');
+
+const catController = require('./controllers/catController.js');
+const requestLogger = require('./middlewares/requestLoggerMiddlewares.js');
 
 const app = express();
 // console.log(path.resolve(__dirname));
@@ -9,6 +12,14 @@ const app = express();
 // searches for logical static folder in public folder
 // app.use('/static', express.static('./public'));
 app.use(express.static('./public'));
+
+// use middleware on all routes, application level
+// app.use(requestLogger);
+// use middleware on custom/specific routes, route level
+app.use('/cats', requestLogger);
+
+// use middelware on controller level
+// app.use('/cats', requestLogger, catController);
 app.use('/cats', catController);
 
 
@@ -47,6 +58,8 @@ app.get('/addBreed', (req, res) => {
     res.end();
 });
 
+// middleware on action level
+// app.get('/addCat',requestLogger ,(req, res) => {
 app.get('/addCat', (req, res) => {
     res.header({
         'Content-Type': 'text/html'
