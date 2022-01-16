@@ -1,6 +1,6 @@
 const express = require('express');
 const initHandlebars = require('./config/handlebars.js');
-const routes  = require('./routes.js');
+const routes = require('./routes.js');
 
 // const handlebars = require('express-handlebars');
 // const { engine } = require('express-handlebars');
@@ -8,6 +8,12 @@ const routes  = require('./routes.js');
 // app.set('view engine', 'handlebars');
 
 const app = express();
+
+// enables bodyparser for express
+app.use(express.urlencoded({
+    extended: true,
+}));
+
 initHandlebars(app);
 // require('./config/handlebars.js')(app);
 
