@@ -10,7 +10,8 @@ const app = express();
 
 // set code extension for express and handlebars
 app.engine('hbs', engine({
-    extname: 'hbs',
+    extname: 'hbs', // set extension for handlebars
+
     // defaultLayout: 'site'
     // provides alternative default name for main.hbs
 }));
@@ -25,7 +26,8 @@ app.set('view engine', 'hbs');
 // console.log(path.resolve(__dirname));
 // searches for logical static folder in public folder
 // app.use('/static', express.static('./public'));
-app.use(express.static('./public'));
+// app.use(express.static('./public'));
+app.use(express.static('public'));
 
 // use middleware on all routes, application level
 // app.use(requestLogger);

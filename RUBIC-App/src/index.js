@@ -9,6 +9,11 @@ const app = express();
 initHandlebars(app);
 // require('./config/handlebars.js')(app);
 
+// app.use('/static', express.static(__dirname + '/public'));
+// app.use('/static',express.static('public'));
+
+app.use(express.static(__dirname + '/public'));
+// app.use(express.static('public'));
 
 app.all('/', (req, res) => {
     // res.write('Hello World');

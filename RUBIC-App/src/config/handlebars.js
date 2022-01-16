@@ -4,6 +4,7 @@ const path = require('path');
 
 const initHandlebars = (app) => {
     app.set('views', path.resolve(__dirname, '../views' ));
+    // console.log(path.resolve(__dirname ), path.resolve(__dirname, '../views' ));
     // app.set('views', path.resolve('./src/views'));
     app.engine('hbs', engine({
         extname: 'hbs'
