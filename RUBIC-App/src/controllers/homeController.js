@@ -3,7 +3,7 @@ const cubeService = require('../services/cubeService.js');
 
 const router = express.Router();
 
-const renderHome = (req, res) => {
+const home = (req, res) => {
     let cubes = cubeService.getAll();
 
     res.render('index', {
@@ -11,6 +11,11 @@ const renderHome = (req, res) => {
     });
 };
 
-router.get('/', renderHome);
+const about = (req, res)=>{
+    res.render('about');
+};
+
+router.get('/', home);
+router.get('/about', about);
 
 module.exports = router;
