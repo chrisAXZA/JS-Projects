@@ -25,9 +25,26 @@ const getOne = (id) => {
 }
 
 const search = (text, from, to) => {
-    const cubes = Cube.cubes.filter(c => c.name.toLowerCase().includes(text.toLowerCase()));
-    return cubes;
+    // const cubes = Cube.cubes.filter(c => {
+    let result = Cube.cubes;
+
+    if (text) {
+        result = result.filter(c => c.name.toLowerCase().includes(text.toLowerCase()));
+    }
+
+    if (from) {
+        result = result.filter(c => c.difficulty >= from);
+    }
+
+    if (to) {
+        result = result.filter(c => c.difficulty <= to);
+    }
+
+    return result;
 };
+// c.name.toLowerCase().includes(text.toLowerCase());
+// return cubes;
+// };
 
 const cubeService = {
     create,

@@ -196,6 +196,26 @@ input[type=submit]:hover {
     cursor: pointer;
 }
 
+input[type=reset] {
+    background-color: #EF5542;
+    border: none;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    width: 25%;
+    margin: 5px 5px 5px 25%;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+
+input[type=reset]:hover {
+    background-color: #718F94;
+    cursor: pointer;
+}
+
 div.form {
     border-radius: 5px;
     padding: 20px;
