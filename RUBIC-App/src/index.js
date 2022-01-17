@@ -1,6 +1,7 @@
 const express = require('express');
 const initHandlebars = require('./config/handlebars.js');
 const routes = require('./routes.js');
+const config = require('./config/config.json')[process.env.NODE_ENV || 'development'];
 
 // const handlebars = require('express-handlebars');
 // const { engine } = require('express-handlebars');
@@ -24,5 +25,11 @@ app.use(express.static(__dirname + '/public'));
 // app.use(express.static('public'));
 app.use(routes);
 
+// console.log(typeof config.PORT);
 
-app.listen(5000, console.log.bind(console, 'Application is runnging on http://localhost:5000'));
+app.listen(config.PORT, console.log.bind(console, `Application is running on http://localhost:${config.PORT}`));
+
+// app.listen(5000, console.log.bind(console, 'Application is runnging on http://localhost:5000'));
+
+// "start": "node app.js",
+// "test": "NODE_ENV=test mocha --reporter spec"
