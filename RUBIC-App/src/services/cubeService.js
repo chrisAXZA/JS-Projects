@@ -24,10 +24,16 @@ const getOne = (id) => {
     return Cube.cubes.find(c => c.id == id);
 }
 
+const search = (text, from, to) => {
+    const cubes = Cube.cubes.filter(c => c.name.toLowerCase().includes(text.toLowerCase()));
+    return cubes;
+};
+
 const cubeService = {
     create,
     getAll,
-    getOne
+    getOne,
+    search
 };
 
 module.exports = cubeService;
