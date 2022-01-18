@@ -2,6 +2,7 @@ const express = require('express');
 const initHandlebars = require('./config/handlebars.js');
 const routes = require('./routes.js');
 const config = require('./config/config.json')[process.env.NODE_ENV || 'development'];
+const initDatabase = require('./config/database.js');
 
 // const handlebars = require('express-handlebars');
 // const { engine } = require('express-handlebars');
@@ -27,7 +28,18 @@ app.use(routes);
 
 // console.log(typeof config.PORT);
 
-app.listen(config.PORT, console.log.bind(console, `Application is running on http://localhost:${config.PORT}`));
+
+initDatabase(config.DB_CONNECTION_STRING)
+    .then(() => {
+        app.listen(config.PORT, console.log.bind(console, `Application is running on http://localhost:${config.PORT}`));
+
+    })
+    .catch(err => {
+        console.log('Application init failed: ', err);
+    })
+// app.listen(config.PORT, console.log.bind(console, `Application is running on http://localhost:${config.PORT}`));
+
+
 
 // app.listen(5000, console.log.bind(console, 'Application is runnging on http://localhost:5000'));
 
