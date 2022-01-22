@@ -11,22 +11,34 @@ const Cube = require('../models/Cube.js');
 
 // const getAll = () => cubeDb.slice();
 // const getAll = () => Cube.getAll();
-const getAll = () => Cube.cubes;
 
-const create = (name, description, imageUrl, difficulty) => {
-    let cube = new Cube(name, description, imageUrl, difficulty);
-
-    // cubeDb.push(cube);
-    Cube.add(cube);
-};
+// const getAll = () => Cube.cubes;
+const getAll = () => Cube.find({}).lean();
 
 const getOne = (id) => {
-    return Cube.cubes.find(c => c.id == id);
+    return Cube.findById(id);
+    // return Cube.cubes.find(c => c.id == id);
 }
+
+const create = (name, description, imageUrl, difficulty) => {
+    // let cube = new Cube(name, description, imageUrl, difficulty);
+    let cube = new Cube({
+        name,
+        description,
+        imageUrl,
+        difficulty
+    });
+
+    // cubeDb.push(cube);
+    // Cube.add(cube);
+
+    return cube.save();
+};
 
 const search = (text, from, to) => {
     // const cubes = Cube.cubes.filter(c => {
-    let result = Cube.cubes;
+    // let result = Cube.cubes;
+    let result = getAll();
 
     if (text) {
         result = result.filter(c => c.name.toLowerCase().includes(text.toLowerCase()));
