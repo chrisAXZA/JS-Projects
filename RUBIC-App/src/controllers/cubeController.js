@@ -18,7 +18,7 @@ const createCube = async (req, res) => {
         await cubeService.create(name, description, imageUrl, difficulty);
         res.redirect('/');
     } catch (err) {
-        res.status(404).send(err.message).end();
+        // res.status(404).send(err.message).end();
         // res.status(404).json({ message: 'Could not create Cube!', err });
     }
 
@@ -31,7 +31,8 @@ const cubeDetails = async (req, res) => {
     // console.log(cube);
     // res.end();
 
-    res.render('details', cube);
+    res.render('cube/details', cube);
+    // res.render('details', cube);
     // res.render('details', { ...cube })
 };
 
