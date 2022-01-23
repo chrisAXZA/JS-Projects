@@ -16,7 +16,12 @@ const Cube = require('../models/Cube.js');
 const getAll = () => Cube.find({}).lean();
 
 const getOne = (id) => {
-    return Cube.findById(id);
+    const cube = Cube.findById(id).lean();
+    return cube;
+    
+    // const cube2 = Cube.findById(id);
+    // return Cube.findById(id);
+
     // return Cube.cubes.find(c => c.id == id);
 }
 
