@@ -1,9 +1,16 @@
 const router = require('express').Router({ mergeParams: true });
 
-router.get('/add', (req, res) => {
-    console.log(req.params.cubeId);
+const cubeService = require('../services/cubeService.js');
 
-    res.end();
+router.get('/add', async (req, res) => {
+    let cube = await cubeService.getOne(req.params.cubeId);
+
+
+    // console.log(req.params.cubeId);
+    // res.render('cube/accessory/add', cube);
+    res.render('cube/accessory/add', { ...cube });
+
+    // res.end();
 });
 
 module.exports = router;
