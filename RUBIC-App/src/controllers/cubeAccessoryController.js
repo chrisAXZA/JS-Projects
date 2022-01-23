@@ -15,4 +15,12 @@ router.get('/add', async (req, res) => {
     // res.end();
 });
 
+router.post('/add', async (req, res) => {
+    const cubeId = req.params.cubeId;
+
+    await cubeService.attachAccessory(cubeId, req.body.accessory);
+
+    res.redirect(`/cube/${cubeId}`);
+});
+
 module.exports = router;
