@@ -8,7 +8,7 @@ const renderCreateCube = async (req, res) => {
     // let cubes = await cubeService.getAll();
     // console.log(cubes);
 
-    res.render('create');
+    res.render('cube/create');
 };
 
 const createCube = async (req, res) => {
