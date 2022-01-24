@@ -4,9 +4,10 @@ const cubeService = require('../services/cubeService.js');
 const accessoryService = require('../services/accessoryService.js');
 
 router.get('/add', async (req, res) => {
-    let cube = await cubeService.getOne(req.params.cubeId);
     // let accessories = [];
-    let accessories = await accessoryService.getAll();
+    // let accessories = await accessoryService.getAll();
+    let cube = await cubeService.getOne(req.params.cubeId);
+    let accessories = await accessoryService.getAllWithout(cube.accessories.map(a => a._id));
 
     // console.log(req.params.cubeId);
     // res.render('cube/accessory/add', cube);
