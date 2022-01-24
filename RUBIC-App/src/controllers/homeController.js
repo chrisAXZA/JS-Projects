@@ -15,14 +15,14 @@ const about = (req, res) => {
     res.render('about');
 };
 
-const search = (req, res) => {
+const search = async (req, res) => {
     // console.log(req.query);
     // let search = req.query.search;
     // let from = req.query.from;
     // let to = req.query.to;
     let { search, from, to } = req.query;
 
-    let cubes = cubeService.search(search, from, to);
+    let cubes = await cubeService.search(search, from, to);
 
     if (cubes.length < 1) {
         return res.redirect('/');

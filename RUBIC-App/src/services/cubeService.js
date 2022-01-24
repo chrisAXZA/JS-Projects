@@ -41,10 +41,10 @@ const create = (name, description, imageUrl, difficulty) => {
     return cube.save();
 };
 
-const search = (text, from, to) => {
+const search = async (text, from, to) => {
     // const cubes = Cube.cubes.filter(c => {
     // let result = Cube.cubes;
-    let result = getAll();
+    let result = await getAll();
 
     if (text) {
         result = result.filter(c => c.name.toLowerCase().includes(text.toLowerCase()));
