@@ -1,10 +1,15 @@
 const express = require('express');
 const cubeService = require('../services/cubeService.js');
+const Cube = require('../models/Cube.js');
 
 const router = express.Router();
 
 const home = async (req, res) => {
     let cubes = await cubeService.getAll();
+
+    // let test = await Cube.findByName('Mirror Cube');
+
+    // console.log(test);
 
     res.render('index', {
         cubes
