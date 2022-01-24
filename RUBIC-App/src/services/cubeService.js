@@ -17,7 +17,7 @@ const Cube = require('../models/Cube.js');
 const getAll = () => Cube.find({}).lean();
 
 const getOne = (id) => {
-    const cube = Cube.findById(id).lean();
+    const cube = Cube.findById(id).populate('accessories').lean();
     return cube;
 
     // const cube2 = Cube.findById(id);
