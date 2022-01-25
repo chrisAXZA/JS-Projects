@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const initHandlebars = require('./config/handlebars.js');
 const routes = require('./routes.js');
 const config = require('./config/config.json')[process.env.NODE_ENV || 'development'];
@@ -15,6 +16,8 @@ const app = express();
 app.use(express.urlencoded({
     extended: true,
 }));
+app.use(cookieParser());
+
 
 initHandlebars(app);
 // require('./config/handlebars.js')(app);
