@@ -1,5 +1,8 @@
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+
+const { SECRET } = require('../constants.js');
 const User = require('../models/User.js');
+const { jwtSign } = require('../utils/jwtUtils.js');
 
 exports.register = function (username, password, repeatPassword) {
     // service hash functionality
@@ -17,8 +20,8 @@ exports.login = function (username, password) {
     return User.findByUsername(username)
         .then(user => {
             // console.log('>>>' + user);
-            return Promise.all([user.validatePassword(password), user]);
-            // return Promise.all([bcrypt.compare(password, user.password), user]);
+            // return Promise.all([User.validatePassword(password), user]);
+            return Promise.all([bcrypt.compare(password, user.password), user]);
 
             // try {
             //     return Promise.all([bcrypt.compare(password, user.password), user]);
@@ -35,11 +38,25 @@ exports.login = function (username, password) {
             }
         })
         .catch(() => null);
-        // .catch(err => {
-        //     console.log(err);
-        //     return null;
-        // });
+    // .catch(err => {
+    //     console.log(err);
+    //     return null;
+    // });
 }
+
+exports.createToken = function (user) {
+    let payload = {
+        // username: user.get('username'),
+        // _id: user.get('_id'),
+        username: user.username,
+        _id: user._id,
+    };
+
+    const token = jwtSign(payload, SECRET);
+    return token;
+    // .then(token);
+};
+
 
 // exports.login = function (username, password) {
 //     return User.findByUsername(username)
