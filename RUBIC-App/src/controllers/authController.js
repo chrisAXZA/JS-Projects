@@ -9,9 +9,17 @@ router.post('/login', async (req, res) => {
     // console.log(req.body);
 
     const { username, password } = req.body;
-    let auth = await authService.login(username, password);
+    let user = await authService.login(username, password);
 
-    res.redirect('/login');
+    console.log(user);
+
+    if (user) {
+        res.redirect('/');
+    } else {
+        res.redirect('/404');
+    }
+
+    // res.redirect('/login');
 });
 
 router.get('/register', (req, res) => {

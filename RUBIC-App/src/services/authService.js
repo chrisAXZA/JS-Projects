@@ -16,16 +16,29 @@ exports.register = function (username, password, repeatPassword) {
 exports.login = function (username, password) {
     return User.findByUsername(username)
         .then(user => {
-            return Promise.all([bcrypt.compare(password, user.password), user]);
+            // console.log('>>>' + user);
+            return Promise.all([user.validatePassword(password), user]);
+            // return Promise.all([bcrypt.compare(password, user.password), user]);
+
+            // try {
+            //     return Promise.all([bcrypt.compare(password, user.password), user]);
+            // } catch (error) {
+            //     console.log(error.message);
+            // }
             // return bcrypt.compare(password, user.password)
         })
         .then(([isValid, user]) => {
-            if(isValid) {
+            if (isValid) {
                 return user;
             } else {
                 throw { message: 'Username or password can not be found!' };
             }
-        });
+        })
+        .catch(() => null);
+        // .catch(err => {
+        //     console.log(err);
+        //     return null;
+        // });
 }
 
 // exports.login = function (username, password) {

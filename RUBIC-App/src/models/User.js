@@ -34,6 +34,10 @@ userSchema.static('findByUsername', function (username) {
     // return this.find({ username });
 });
 
+userSchema.method('validatePassword', function (password) {
+    bcrypt.compare(password, this.password);
+});
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
