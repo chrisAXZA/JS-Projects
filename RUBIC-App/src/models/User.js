@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
 // pre => after valiation + before safe
 userSchema.pre('save', function (next) {
     // console.log('>>> ' + this);
-    
+
     // expression function provides this, second arrow function refers to parent this
     bcrypt.hash(this.password, 10)
         .then(hash => {
@@ -27,6 +27,11 @@ userSchema.pre('save', function (next) {
 
     // return;
     // next();
+});
+
+userSchema.static('findByUsername', function (username) {
+    return this.findOne({ username });
+    // return this.find({ username });
 });
 
 const User = mongoose.model('User', userSchema);
