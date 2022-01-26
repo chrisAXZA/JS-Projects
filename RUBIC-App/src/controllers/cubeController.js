@@ -37,8 +37,19 @@ const cubeDetails = async (req, res) => {
     // res.render('details', { ...cube })
 };
 
+const getEditCubePage = (req, res) => {
+    // console.log(req.body);
+    res.render('cube/edit');
+};
+
+const getDeleteCubePage = (req, res) => {
+    res.render('cube/delete');
+};
+
 router.get('/create', renderCreateCube);
 router.post('/create', createCube);
+router.get('/:cubeId/edit', getEditCubePage);
+router.get('/:cubeId/delete', getDeleteCubePage);
 router.get('/:cubeId', cubeDetails);
 router.use('/:cubeId/accessory', cubeAccessoryController);
 // router.get('/:cubeId/accessory/add', addCubeAccessory);
