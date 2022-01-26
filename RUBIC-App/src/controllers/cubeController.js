@@ -1,6 +1,9 @@
 const express = require('express');
 const cubeService = require('../services/cubeService.js');
 const cubeAccessoryController = require('./cubeAccessoryController.js');
+const { isAuth } = require('../middlewares/authMiddleware.js');
+
+// router.use(isAuth);
 
 const router = express.Router();
 
@@ -43,20 +46,21 @@ const getEditCubePage = (req, res) => {
 };
 
 const getDeleteCubePage = (req, res) => {
-    console.log(req.user);
-    if (!req.user) {
-        return res.redirect('/login');
-        // return res.status(401).redirect('/404');
-    }
+    // console.log(req.user);
+    // if (!req.user) {
+    //     return res.redirect('/login');
+    //     // return res.status(401).redirect('/404');
+    // }
 
     res.render('cube/delete');
 };
 
-router.get('/create', renderCreateCube);
-router.post('/create', createCube);
-router.get('/:cubeId/edit', getEditCubePage);
-router.get('/:cubeId/delete', getDeleteCubePage);
+router.get('/create', isAuth, renderCreateCube);
+router.post('/create', isAuth, createCube);
+router.get('/:cubeId/edit', isAuth, getEditCubePage);
+router.get('/:cubeId/delete', isAuth, getDeleteCubePage);
 router.get('/:cubeId', cubeDetails);
+
 router.use('/:cubeId/accessory', cubeAccessoryController);
 // router.get('/:cubeId/accessory/add', addCubeAccessory);
 
