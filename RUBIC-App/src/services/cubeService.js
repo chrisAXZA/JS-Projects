@@ -76,6 +76,10 @@ const deleteOne = (cubeId) => {
     return Cube.findByIdAndDelete(cubeId);
 };
 
+const updateOne = (cubeId, cube) => {
+    return Cube.findByIdAndUpdate(cubeId, cube, { runValidators: true });
+};
+
 const cubeService = {
     create,
     getAll,
@@ -83,6 +87,7 @@ const cubeService = {
     search,
     attachAccessory,
     deleteOne,
+    updateOne,
 };
 
 module.exports = cubeService;
