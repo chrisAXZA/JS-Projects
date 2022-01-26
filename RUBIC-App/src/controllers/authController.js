@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { TOKEN_COOKIE_NAME } = require('../constants.js');
 const authService = require('../services/authService.js');
 // const { createToken } = require('../utils/jwtUtils.js');
 
@@ -20,7 +21,7 @@ router.post('/login', async (req, res) => {
 
     // console.log('>>>' + user, '>>>' + token);
 
-    res.cookie('app_token', token,{
+    res.cookie(TOKEN_COOKIE_NAME, token, {
         httpOnly: true,
     });
 

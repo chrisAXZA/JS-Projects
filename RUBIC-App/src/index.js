@@ -4,6 +4,7 @@ const initHandlebars = require('./config/handlebars.js');
 const routes = require('./routes.js');
 const config = require('./config/config.json')[process.env.NODE_ENV || 'development'];
 const initDatabase = require('./config/database.js');
+const { auth } = require('./middlewares/authMiddleware.js');
 
 // const handlebars = require('express-handlebars');
 // const { engine } = require('express-handlebars');
@@ -17,7 +18,7 @@ app.use(express.urlencoded({
     extended: true,
 }));
 app.use(cookieParser());
-
+app.use(auth);
 
 initHandlebars(app);
 // require('./config/handlebars.js')(app);
