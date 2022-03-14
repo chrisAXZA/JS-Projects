@@ -17,7 +17,6 @@ const endpoints = {
     profile: '/data/memes?where=_ownerId%3D%220002%22&sortBy=_createdOn%20desc'
 };
 
-
 function json(data) {
     return {
         status: 200,
@@ -74,6 +73,7 @@ describe('E2E tests', function () {
         await page.close();
         await context.close();
     });
+    
     describe('Authentication [ 20 Points ]', () => {
         it('register does not work with empty fields [ 5 Points ]', async () => {
             const endpoint = '**' + endpoints.register;
@@ -106,7 +106,6 @@ describe('E2E tests', function () {
 
             await page.waitForTimeout(300);
             await page.waitForSelector('form');
-
 
             await page.fill('[name="username"]', username);
             await page.fill('[name="email"]', email);
@@ -277,7 +276,6 @@ describe('E2E tests', function () {
         });
 
         it('show meme details [ 5 Points ]', async () => {
-
             await page.goto(host);
             await page.click('text=All Memes');
 
@@ -315,7 +313,6 @@ describe('E2E tests', function () {
 
             expect(await page.isVisible('text="Delete"')).to.be.false;
             expect(await page.isVisible('text="Edit"')).to.be.false;
-
         });
     });
 
@@ -341,7 +338,6 @@ describe('E2E tests', function () {
                 page.waitForResponse(loginEndpoint),
                 page.click('[type="submit"]')
             ]);
-
         });
 
         it('create does NOT work with empty fields [ 5 Points ]', async () => {
@@ -538,9 +534,7 @@ describe('E2E tests', function () {
             expect(postData.title).to.contains(mockData[0].title);
             expect(postData.description).to.contains(mockData[0].description);
             expect(postData.imageUrl).to.equal(mockData[0].imageUrl);
-
         });
-
     });
 
     describe('User Profile Page [ 10 Points ]', async () => {
@@ -585,7 +579,6 @@ describe('E2E tests', function () {
             expect(values[1]).to.contains(email);
             expect(values[2]).to.equal('My memes count: 0');
             expect(img).to.contains('/images/female.png');
-
         });
 
         it('check profile page for "No memes in database." - with 0 memes [ 2.5 Points ]', async () => {
@@ -600,7 +593,6 @@ describe('E2E tests', function () {
 
             await page.waitForTimeout(300);
             expect(userMemes).to.contains('No memes in database.');
-
         });
 
         it('check profile page information - with 2 memes [ 2.5 Points ]', async () => {
@@ -617,8 +609,6 @@ describe('E2E tests', function () {
             expect(memes.length).to.equal(2);
             expect(memes[0]).to.contains('test');
             expect(memes[1]).to.contains('meme 2');
-
-
         });
     });
 
@@ -642,8 +632,8 @@ describe('E2E tests', function () {
 
             const notification = await page.isVisible('#errorBox');
             expect(notification).to.be.true;
-
         });
+
         it('Register notification with invalid data', async () => {
             const endpoint = '**' + endpoints.register;
             let called = false;
@@ -664,6 +654,7 @@ describe('E2E tests', function () {
             const notification = await page.isVisible('#errorBox');
             expect(notification).to.be.true;
         });
+
         it('Create notification with invalid data', async () => {
             // Login user
             const email = 'peter@abv.bg';
@@ -706,6 +697,7 @@ describe('E2E tests', function () {
             const notification = await page.isVisible('#errorBox');
             expect(notification).to.be.true;
         });
+
         it('Edit notification with invalid data', async () => {
             // Login user
             const email = 'peter@abv.bg';
@@ -761,5 +753,4 @@ describe('E2E tests', function () {
             expect(notification).to.be.true;
         });
     });
-
 });

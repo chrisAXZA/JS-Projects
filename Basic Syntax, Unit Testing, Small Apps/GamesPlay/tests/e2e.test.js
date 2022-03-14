@@ -20,7 +20,6 @@ const endpoints = {
     postComments: '/data/comments'
 };
 
-
 let browser;
 let context;
 let page;
@@ -39,7 +38,6 @@ describe('E2E tests', function () {
         await page.close();
         await context.close();
     });
-
 
     // Test proper
     describe('Authentication [ 20 Points ]', () => {
@@ -697,7 +695,6 @@ describe('E2E tests', function () {
             expect(allComments.length).to.be.equal(comments.length);
             expect(allComments[0]).to.contains(comments[0].comment);
             expect(allComments[1]).to.contains(comments[1].comment);
-
         });
     });
 

@@ -99,7 +99,6 @@ describe('E2E tests', function () {
             await page.fill('[name="email"]', data.email);
             await page.fill('[name="password"]', data.password);
 
-
             const [request] = await Promise.all([
                 onRequest(),
                 page.click('[type="submit"]')
@@ -681,7 +680,6 @@ async function setupContext(context) {
     //Comments
     await handleContext(context, endpoints.comments('1001'), { get: mockData.comments });
     await handleContext(context, endpoints.comments('1003'), { get: mockData.comments });
-
 
     // Profile Page
     await handleContext(context, endpoints.search('Name'), { get: mockData.catalog.slice(0, 2) });
