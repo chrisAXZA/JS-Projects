@@ -1,4 +1,4 @@
-import { html } from '../../node_modules/lit-html/lit-html.js';
+import { html } from 'lit-html/lit-html.js';
 
 import { notify } from '../notification.js';
 import { getMemeById, updateMeme } from '../api/data.js';
