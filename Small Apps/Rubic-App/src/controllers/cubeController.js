@@ -1,10 +1,9 @@
 const express = require('express');
+const { isAuth } = require('../middlewares/authMiddleware.js');
+
+const Cube = require('../models/Cube.js');
 const cubeService = require('../services/cubeService.js');
 const cubeAccessoryController = require('./cubeAccessoryController.js');
-const { isAuth } = require('../middlewares/authMiddleware.js');
-const Cube = require('../models/Cube.js');
-
-// router.use(isAuth);
 
 const router = express.Router();
 
@@ -26,9 +25,6 @@ const createCube = async (req, res) => {
         // res.status(404).send(err.message).end();
         // res.status(404).json({ message: 'Could not create Cube!', err });
     }
-
-
-    // res.redirect('/cube/create');
 };
 
 const cubeDetails = async (req, res) => {
@@ -56,12 +52,6 @@ const postEditCubePage = async (req, res) => {
 };
 
 const getDeleteCubePage = async (req, res) => {
-    // console.log(req.user);
-    // if (!req.user) {
-    //     return res.redirect('/login');
-    //     // return res.status(401).redirect('/404');
-    // }
-
     let cubeId = req.params.cubeId;
     let cube = await cubeService.getOne(cubeId);
 

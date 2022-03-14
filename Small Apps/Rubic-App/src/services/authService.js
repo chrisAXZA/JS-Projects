@@ -38,10 +38,6 @@ exports.login = function (username, password) {
             }
         })
         .catch(() => null);
-    // .catch(err => {
-    //     console.log(err);
-    //     return null;
-    // });
 }
 
 exports.createToken = function (user) {
@@ -56,18 +52,3 @@ exports.createToken = function (user) {
     return token;
     // .then(token);
 };
-
-
-// exports.login = function (username, password) {
-//     return User.findByUsername(username)
-//         .then(user => {
-//             return bcrypt.compare(password, user.password)
-//                 .then(isValid => {
-//                     if (isValid) {
-//                         return user;
-//                     } else {
-//                         throw { message: 'Username or password can not be found!' };
-//                     }
-//                 });
-//         });
-// }

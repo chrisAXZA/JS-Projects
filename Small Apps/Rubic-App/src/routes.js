@@ -2,9 +2,9 @@ const express = require('express');
 
 const cubeController = require('./controllers/cubeController.js');
 const homeController = require('./controllers/homeController.js');
+const authController = require('./controllers/authController.js');
 const detailsController = require('./controllers/detailsController.js');
 const accessoryController = require('./controllers/accessoryController.js');
-const authController = require('./controllers/authController.js');
 
 const router = express.Router();
 

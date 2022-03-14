@@ -1,7 +1,7 @@
 import * as api from './api/api.js';
 import { logout } from './api/data.js';
-import { page, render } from './lib.js.js.js.js'
-import { getUserData } from './util.js.js.js.js';
+import { page, render } from './lib.js.js.js.js.js'
+import { getUserData } from './util.js.js.js.js.js';
 import { catalogPage } from './views/catalog.js';
 import { createPage } from './views/create.js';
 import { detailsPage } from './views/details.js';

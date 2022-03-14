@@ -7,10 +7,6 @@ const router = express.Router();
 const home = async (req, res) => {
     let cubes = await cubeService.getAll();
 
-    // let test = await Cube.findByName('Mirror Cube');
-
-    // console.log(test);
-
     res.render('index', {
         cubes
     });
@@ -21,10 +17,6 @@ const about = (req, res) => {
 };
 
 const search = async (req, res) => {
-    // console.log(req.query);
-    // let search = req.query.search;
-    // let from = req.query.from;
-    // let to = req.query.to;
     let { search, from, to } = req.query;
 
     let cubes = await cubeService.search(search, from, to);

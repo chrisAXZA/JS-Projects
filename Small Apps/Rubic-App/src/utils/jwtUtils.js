@@ -14,14 +14,3 @@ exports.jwtSign = function (payload, secret) {
 
     return promise;
 };
-
-// exports.createToken = function (user) {
-//     let payload = {
-//         username: user.get('username'),
-//         _id: user.get('_id'),
-//     };
-
-//     const token = jwtSign(payload, SECRET);
-//     return token;
-//     // .then(token);
-// };
