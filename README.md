@@ -1,3 +1,3 @@
-# JS-TEST2
+# JS-Projects
 
 Demo projects and basic syntax
