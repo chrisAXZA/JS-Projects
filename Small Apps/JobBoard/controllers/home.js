@@ -1,8 +1,8 @@
+const router = require('express').Router();
+
 const { isUser } = require('../middleware/guards.js');
 const preload = require('../middleware/preload.js');
-const { getHomeAds, getAllAds, getMostLikedPlay, getPlaysByDate, getAllHousings, getHousingsBySearch, searchAds, getHomeAdsNewest } = require('../services/ad.js');
-
-const router = require('express').Router();
+const { getAllAds, searchAds, getHomeAdsNewest } = require('../services/ad.js');
 
 router.get('/', preload(), async (req, res) => {
     // let ads = await getHomeAds();
@@ -29,48 +29,6 @@ router.get('/search', preload(), isUser(), async (req, res) => {
     }
 
     res.render('search', { title: 'Search Page', ads, text: req.query.text });
-});
-
-router.get('/sortByDate', isUser(), async (req, res) => {
-    let plays = await getPlaysByDate();
-
-    plays = plays.map(p => ({ ...p, likes: p.users.length }));
-
-    res.render('homeUser', { title: 'Home Page', plays });
-});
-
-router.get('/sortByLikes', isUser(), async (req, res) => {
-    let plays = await getMostLikedPlay();
-    plays = plays.map(p => ({ ...p, likes: p.users.length }));
-
-    res.render('homeUser', { title: 'Home Page', plays });
-});
-
-
-router.get('/housings', async (req, res) => {
-    const housings = await getAllHousings();
-    res.render('catalog', { title: 'All Housings', housings });
-});
-
-router.get('/housings/:id', preload(true), (req, res) => {
-    const currentHousing = res.locals.housing;
-
-    if (currentHousing.renters.length > 0) {
-        currentHousing.hasRenters = true;
-    } else {
-        currentHousing.hasRenters = false;
-    }
-
-    if (req.session.user) {
-        currentHousing.hasUser = true;
-        currentHousing.isOwner = req.session.user._id == currentHousing.owner._id;
-        currentHousing.freePieces = currentHousing.pieces > 0;
-        currentHousing.availablePieces = currentHousing.pieces - currentHousing.renters.length;
-        currentHousing.hasRented = currentHousing.renters.some(r => r._id == req.session.user._id);
-        currentHousing.currentRenters = currentHousing.renters.map(r => r.name).join(', ');
-    }
-
-    res.render('details', { title: 'Housing Details' });
 });
 
 module.exports = router;

@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const { isUser, isOwner } = require('../middleware/guards.js');
 const preload = require('../middleware/preload.js');
-const { createPlay, updatePlay, deleteById, likePlay, createAd, joinAd, updateAd } = require('../services/ad.js');
+const { deleteById, createAd, joinAd, updateAd } = require('../services/ad.js');
 const mapErrors = require('../util/mappers.js');
 
 router.get('/create', isUser(), (req, res) => {

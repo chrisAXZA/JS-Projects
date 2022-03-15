@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { isGuest, isOwner, isUser } = require('../middleware/guards.js');
+const { isGuest, isUser } = require('../middleware/guards.js');
 const { register, login } = require('../services/user.js');
 const mapErrors = require('../util/mappers.js');
 

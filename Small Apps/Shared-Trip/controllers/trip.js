@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const { isUser, isOwner } = require('../middleware/guards.js');
 const preload = require('../middleware/preload.js');
-const { createTrip, joinTrip, updateTrip, deleteById, likePlay } = require('../services/trip.js');
+const { createTrip, joinTrip, updateTrip, deleteById } = require('../services/trip.js');
 const mapErrors = require('../util/mappers.js');
 
 router.get('/create', isUser(), (req, res) => {
@@ -101,34 +101,10 @@ router.get('/delete/:id', preload(false), isOwner(), async (req, res) => {
     res.redirect('/sharedTrips');
 });
 
-router.get('/likePlay/:id', isUser(), async (req, res) => {
-    const id = req.params.id;
-
-    try {
-        await likePlay(id, req.session.user._id);
-    } catch (error) {
-        console.log(error);
-    } finally {
-        res.redirect('/details/' + id);
-    }
-});
-
 router.get('/delete/:id', preload(false), isOwner(), async (req, res) => {
     // console.log(req.params);
     await deleteById(req.params.id);
     res.redirect('/');
-});
-
-router.get('/rent/:id', isUser(), async (req, res) => {
-    const id = req.params.id;
-
-    try {
-        await likePlay(id, req.session.user._id);
-    } catch (error) {
-        console.log(error);
-    } finally {
-        res.redirect('/housings/' + id);
-    }
 });
 
 module.exports = router;
