@@ -52,7 +52,7 @@
 
 //         return newString;
 //     };
-// }())
+// }());
 
 (function () {
     String.prototype.ensureStart = function (str) {
@@ -124,7 +124,7 @@
         return replaced;
     };
 
-}())
+}());
 
 // let a = 'abc';
 // console.log(a.ensureStart('ab'));
@@ -153,5 +153,3 @@ console.log(str);
 str = String.format('jumps {0} {1}',
     'dog');
 console.log(str);
-
-;
