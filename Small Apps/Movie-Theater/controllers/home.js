@@ -1,5 +1,5 @@
-const { isUser } = require('../middleware/guards.js');
 const preload = require('../middleware/preload.js');
+const { isUser } = require('../middleware/guards.js');
 const { getPlaysUser, getPlaysGuest, getMostLikedPlay, getPlaysByDate } = require('../services/play.js');
 
 const router = require('express').Router();

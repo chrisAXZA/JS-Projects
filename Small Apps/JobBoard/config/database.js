@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-require('../models/User.js');
+
 require('../models/Ad.js');
+require('../models/User.js');
 
 // TODO change database name
 const dbName = 'job-board';

@@ -1,6 +1,5 @@
 const { Schema, model, Types: { ObjectId } } = require('mongoose');
 
-// TODO validation
 const URL_PATTERN = /^https?:\/\/(.+)/;
 
 const playSchema = new Schema({

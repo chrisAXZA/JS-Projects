@@ -1,6 +1,5 @@
 const { Schema, model, Types: { ObjectId } } = require('mongoose');
 
-/^([a-zA-Z]+) ([a-zA-Z]+)$/;
 const EMAIL_PATTERN = /^([a-zA-Z]+)@([a-zA-Z]+)\.([a-zA-Z]+)$/;
 
 const userSchema = new Schema({

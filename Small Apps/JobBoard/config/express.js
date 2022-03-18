@@ -1,6 +1,7 @@
 const express = require('express');
-const { create: handlebars } = require('express-handlebars');
 const session = require('express-session');
+const { create: handlebars } = require('express-handlebars');
+
 const userSession = require('../middleware/userSession.js');
 
 module.exports = (app) => {

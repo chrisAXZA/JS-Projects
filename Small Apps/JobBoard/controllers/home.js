@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-const { isUser } = require('../middleware/guards.js');
 const preload = require('../middleware/preload.js');
+const { isUser } = require('../middleware/guards.js');
 const { getAllAds, searchAds, getHomeAdsNewest } = require('../services/ad.js');
 
 router.get('/', preload(), async (req, res) => {

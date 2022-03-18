@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
-const { isUser, isOwner } = require('../middleware/guards.js');
-const preload = require('../middleware/preload.js');
-const { createTrip, joinTrip, updateTrip, deleteById } = require('../services/trip.js');
 const mapErrors = require('../util/mappers.js');
+const preload = require('../middleware/preload.js');
+const { isUser, isOwner } = require('../middleware/guards.js');
+const { createTrip, joinTrip, updateTrip, deleteById } = require('../services/trip.js');
 
 router.get('/create', isUser(), (req, res) => {
     // merges with res.locals !!!

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-const { isUser } = require('../middleware/guards.js');
 const preload = require('../middleware/preload.js');
+const { isUser } = require('../middleware/guards.js');
 const { getAllTrips, tripsByUser } = require('../services/trip.js');
 
 router.get('/', async (req, res) => {

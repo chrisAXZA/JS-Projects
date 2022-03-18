@@ -5,6 +5,7 @@ async function createAd(ad) {
     const result = new Ad(ad);
     await result.save();
 }
+
 async function getHomeAds() {
     return Ad.find({}).limit(3).lean();
 }

@@ -1,5 +1,6 @@
-const User = require('../models/User.js');
 const { hash, compare } = require('bcrypt');
+
+const User = require('../models/User.js');
 
 async function register(email, password, gender) {
     const existing = await getUserByEmail(email);

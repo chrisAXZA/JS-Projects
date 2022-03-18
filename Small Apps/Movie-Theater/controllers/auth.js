@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-const { isGuest, isUser } = require('../middleware/guards.js');
-const { register, login } = require('../services/user.js');
 const mapErrors = require('../util/mappers.js');
+const { register, login } = require('../services/user.js');
+const { isGuest, isUser } = require('../middleware/guards.js');
 
 router.get('/register', isGuest(), (req, res) => {
     // res.render('register', { layout: false });
