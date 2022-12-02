@@ -18,11 +18,6 @@ function fibonacci(n) {
     // });
 }
 
-// fibonacci(2);
-// fibonacci(5);
-// fibonacci(7);
-// fibonacci(22);
-
 function fibonacci2(n) {
     const fib = [0, 1];
 
@@ -32,3 +27,8 @@ function fibonacci2(n) {
 
     return fib;
 }
+
+// fibonacci(2);
+// fibonacci(5);
+// fibonacci(7);
+// fibonacci(22);
