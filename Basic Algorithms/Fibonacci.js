@@ -1,4 +1,4 @@
-// Big O: O(n), as n increases as the number of times the given
+// Big O: O(n)-linear, as n increases as the number of times the given
 // loop executes proportionally 
 
 function fibonacci(n) {
