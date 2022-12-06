@@ -1,4 +1,4 @@
-// Big O: O(n)-linear, as the value of n increases the number of
+// Big O = O(n)-linear, as the value of n increases the number of
 // times the given loop executes increases accordingly
 
 function factorialNum(n) {

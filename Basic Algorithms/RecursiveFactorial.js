@@ -1,4 +1,4 @@
-// Big O(n), as n increases the number of executions increases at
+// Big O = O(n), as n increases the number of executions increases at
 // the same pace
 
 // factorial of a non-negative integer n!, is the product of all

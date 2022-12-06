@@ -1,4 +1,4 @@
-// Big O(n) in iterative solution, in recursive solution Big O(2^n)
+// Big O = O(n) in iterative solution, in recursive solution Big O(2^n)
 // resulting in extremely poor performance> Recursion is poor implementation
 // for Fibonacci
 

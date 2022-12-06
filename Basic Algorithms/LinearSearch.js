@@ -1,4 +1,4 @@
-// Big O(n), linear - as the size of the array increases,
+// Big O = O(n), linear - as the size of the array increases,
 // the number of operations increases accordingly
 
 function linearSearch(arr, target) {

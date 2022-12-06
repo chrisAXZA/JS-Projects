@@ -1,4 +1,4 @@
-// Big O(logn), n refers to the size of the array, the number of 
+// Big O = O(logn), n refers to the size of the array, the number of 
 // instructions increases as the size of n grows, but not at
 // the same rate as n
 

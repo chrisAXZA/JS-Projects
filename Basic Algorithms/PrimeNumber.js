@@ -1,4 +1,4 @@
-// Big O: O(n^2) or O(n) - quadratic or linear, 
+// Big O = O(n^2) or O(n) - quadratic or linear, 
 // with two (nested) loops iterations are larger than input value
 
 function prime(n) {

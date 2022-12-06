@@ -1,4 +1,4 @@
-// Big O: O(n/2) | O(square(n)) number of iterations is no more than half/square of
+// Big O = O(n/2) | O(square(n)) number of iterations is no more than half/square of
 // of the value of n
 
 function power(n) {
